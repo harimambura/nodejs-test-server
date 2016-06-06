@@ -21,5 +21,6 @@ app.use('/',(req, res, next)=>{
 	next();
 });
 
+var port = Number(process.env.PORT || 3000);
 
-app.listen(80);
+app.listen(port);
