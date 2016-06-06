@@ -13,7 +13,7 @@ app.use('/exit',(req, res, next)=>{
 
 });
 app.use('/',(req, res, next)=>{
-	res.send(fs.readFileSync('./public/index.html'));
+	res.sendfile('public/index.html');
 	next();
 });
 
