@@ -1,4 +1,6 @@
-const express = require('express');
+const express = require('express'),
+fs = require('fs');
+
 var app = express();
 app.use('/exit',(req, res, next)=>{
 	res.send(
@@ -11,13 +13,7 @@ app.use('/exit',(req, res, next)=>{
 
 });
 app.use('/',(req, res, next)=>{
-	res.send(
-		`  <div class="hello">
-		    <h1>hi all</h1>
-		    <p>say 'exit' to me...</p>
-		  </div>
-		`
-	);
+	res.send(fs.readFileSync('./public/index.html'));
 	next();
 });
 
