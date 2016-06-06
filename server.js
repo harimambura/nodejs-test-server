@@ -13,7 +13,10 @@ app.use('/exit',(req, res, next)=>{
 
 });
 app.use('/',(req, res, next)=>{
-	res.sendfile('./public/index.html');
+	//res.sendfile('./public/index.html');
+	res.send(`
+	<h1>HELLO, MY BROTHER! YOU ON THE HARIMAMBURA'S PAGE!</h1>
+	`);
 	next();
 });
 
