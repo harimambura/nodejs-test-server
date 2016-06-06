@@ -14,7 +14,7 @@ app.use('/',(req, res, next)=>{
 	res.send(
 		`  <div class="hello">
 		    <h1>hi all</h1>
-		    <p>olololoo</p>
+		    <p>say 'exit' to me...</p>
 		  </div>
 		`
 	);
