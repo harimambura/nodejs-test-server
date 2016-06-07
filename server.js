@@ -13,11 +13,17 @@ app.use('/exit',(req, res, next)=>{
 
 });
 app.use('/',(req, res, next)=>{
-	//res.sendfile('./public/index.html');
-	fs.readFile('/public/index.html', 'utf8', (err, data) => {
-		res.send(data);
-		next();
-	});
+	if (req.path.indexOf('bundle.js') == -1) {
+		fs.readFile('./public/index.html', 'utf8', (err, data) => {
+			res.send(data);
+			next();
+		});
+	} else {
+		fs.readFile('./public/bundle.js', 'utf8', (err, data) => {
+			res.send(data);
+			next();
+		});
+	}		
 	
 });
 
