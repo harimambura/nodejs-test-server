@@ -14,10 +14,11 @@ app.use('/exit',(req, res, next)=>{
 });
 app.use('/',(req, res, next)=>{
 	//res.sendfile('./public/index.html');
-	res.send(`
-	<h1>HELLO, MY BROTHER! YOU ON THE HARIMAMBURA'S PAGE!</h1>
-	`);
-	next();
+	fs.readFile('/public/index.html', 'utf8', (err, data) => {
+		res.send(data);
+		next();
+	});
+	
 });
 
 var port = Number(process.env.PORT || 3000);
