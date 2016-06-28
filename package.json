@@ -2,9 +2,9 @@
   "name": "lamernews",
   "version": "1.0.0",
   "description": "final project",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node service.js",
+    "start": "node server.js",
     "test": "mocha"
   },
   "keywords": [
