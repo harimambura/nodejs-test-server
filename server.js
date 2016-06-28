@@ -49,7 +49,7 @@ app.use(function(err, req, res, next){
   return;
 });
 
-mongoose.connect('mongodb://localhost:27017/test');
+mongoose.connect('mongodb://heroku_4x7dl8kf:asxbxcy214@ds019654.mlab.com:19654/heroku_4x7dl8kf');
 
 app.listen(Number(process.env.PORT || 3000), function() {
   console.log("Server is listening on port", Number(process.env.PORT || 3000));
