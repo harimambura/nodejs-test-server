@@ -1,29 +1,28 @@
 {
-  "name": "nodejs-test-server",
+  "name": "lamernews",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "final project",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node service.js",
+    "test": "mocha"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/harimambura/nodejs-test-server.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/harimambura/nodejs-test-server/issues"
-  },
-  "homepage": "https://github.com/harimambura/nodejs-test-server#readme",
+  "keywords": [
+    "final",
+    "project",
+    "lamernews"
+  ],
+  "author": "zhiryakov andrey",
+  "license": "MIT",
   "devDependencies": {
-    "express": "^4.13.4"
+    "node-sass": "^3.7.0",
+    "sass-loader": "^3.2.0",
+    "webpack": "^1.13.1"
   },
   "dependencies": {
-    "express": "^4.13.4"
-  },
-  "engines": {
-    "node": "^5.5.0",
-    "npm": "^3.3.12"
+    "body-parser": "^1.15.2",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.20",
+    "morgan": "^1.7.0"
   }
 }

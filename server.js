@@ -1,32 +1,56 @@
 const express = require('express'),
-fs = require('fs');
+      app = express(),
+      //routes = require('./app/routes'),
+      //router = express.Router(),
+      mongoose = require('mongoose');
+      userRouter = require('./app/routes/users'),
+      articleRouter = require('./app/routes/articles'),
+      bodyParser    = require('body-parser');
+var morgan = require('morgan');
 
-var app = express();
-app.use('/exit',(req, res, next)=>{
-	res.send(
-		`  <div class="hello">
-		<h1>Command accepted!</h1>
-		<p>Shut down...</p>
-		</div>
-		`
-	);
+app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.json());
+app.use(function(req, res, next){
+  req.handler = (err, dataObj) => {
+    console.log(err || dataObj);
+    res.status(err ? 400 : 200).send(err || dataObj);
+  };
 
-});
-app.use('/',(req, res, next)=>{
-	if (req.path.indexOf('bundle.js') == -1) {
-		fs.readFile('./public/index.html', 'utf8', (err, data) => {
-			res.send(data);
-			next();
-		});
-	} else {
-		fs.readFile('./public/bundle.js', 'utf8', (err, data) => {
-			res.send(data);
-			next();
-		});
-	}		
-	
+  next();
 });
 
-var port = Number(process.env.PORT || 3000);
+//API routes
 
-app.listen(port);
+app.use('/users', userRouter);
+app.use('/articles', articleRouter);
+
+// comments just for test
+app.use('/comments', require('./app/routes/comments'));
+
+app.get('/about', function (req, res) {
+    console.log(req.path);
+    res.send('About page');
+});
+
+app.use('/', express.static('./public'));
+
+app.use(function(req, res, next){
+  console.log('404', 'not found, path:', req.path);
+  res.status(404);
+  res.sendFile(__dirname+'/public/404.html');
+  return;
+});
+
+app.use(function(err, req, res, next){
+  res.status(err.status || 500);
+  console.log(`Internal error(${res.statusCode}): ${err.message}`);
+  res.send({ error: err.message });
+  return;
+});
+
+mongoose.connect('mongodb://localhost:27017/test');
+
+app.listen(Number(process.env.PORT || 3000), function() {
+  console.log("Server is listening on port", Number(process.env.PORT || 3000));
+});
