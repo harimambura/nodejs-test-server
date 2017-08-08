@@ -33,7 +33,7 @@ app.get('/about', function (req, res) {
     res.send('About page');
 });
 
-app.get('/shava', function (req, res) {
+app.post('/shava', function (req, res) {
     res.send(JSON.stringify(req.body));
 });
 
