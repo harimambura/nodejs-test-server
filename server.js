@@ -33,6 +33,10 @@ app.get('/about', function (req, res) {
     res.send('About page');
 });
 
+app.get('/shava', function (req, res) {
+    res.send('test');
+});
+
 app.use('/', express.static('./public'));
 
 app.use(function(req, res, next){
