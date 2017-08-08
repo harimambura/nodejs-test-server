@@ -34,7 +34,7 @@ app.get('/about', function (req, res) {
 });
 
 app.get('/shava', function (req, res) {
-    res.send(req.body);
+    res.send(JSON.stringify(req.body));
 });
 
 app.use('/', express.static('./public'));
