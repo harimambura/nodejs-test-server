@@ -38,7 +38,6 @@ app.post('/rate', function (req, res) {
     if (body.command == '/rate' && body.text !== '') {
           const icon = body.text.split(' ')[0];
           const rate = parseInt(body.text.split(' ')[1]);
-          res.send({icon: icon, rate: rate});
           if (icon && rate && (rate <= 10)) {
                 let message = '';
                 for (let i = 0; i < rate; i++) {
