@@ -44,10 +44,10 @@ app.post('/rate', function (req, res) {
                   message += icon;
                 }
                 message += '/' + rate;
-                res.send(message);
+                return res.send(message);
           }
     }
-    res.send(body);
+    res.send('error');
 });
 
 app.use('/', express.static('./public'));
