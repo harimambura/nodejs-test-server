@@ -43,6 +43,9 @@ app.post('/rate', function (req, res) {
                 for (let i = 0; i < rate; i++) {
                   message += icon;
                 }
+                for (let i = 0; i < 10-rate; i++) {
+                  message += ':white_medium_small_square:';
+                }
                 message += '/' + '10';
                 return res.send({
                       "response_type": "in_channel",
@@ -50,7 +53,10 @@ app.post('/rate', function (req, res) {
                   });
           }
     }
-    res.send();
+    res.send({
+              "response_type": "ephemeral",
+              "text": "Sorry, that didn't work. Please try again."
+            });
 });
 
 app.use('/', express.static('./public'));
