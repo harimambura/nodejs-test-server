@@ -34,12 +34,12 @@ app.get('/about', function (req, res) {
 });
 
 app.post('/rate', function (req, res) {
-    let body = JSON.stringify(req.body);
+    let body = req.body;
     if (body.command == '/rate' && body.text !== '') {
           const icon = body.text.split(' ')[0];
           const rate = parseInt(body.text.split(' ')[1]);
           res.send({icon: icon, rate: rate});
-          if (icon && rate) {
+          if (icon && rate && (rate <= 10)) {
                 let message = '';
                 for (let i = 0; i < rate; i++) {
                   message += icon;
@@ -48,7 +48,7 @@ app.post('/rate', function (req, res) {
                 return res.send(message);
           }
     }
-    res.send(req.body.command + ' ' + req.body.text);
+    res.send();
 });
 
 app.use('/', express.static('./public'));
