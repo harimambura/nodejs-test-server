@@ -47,7 +47,7 @@ app.post('/rate', function (req, res) {
                 res.send(message);
           }
     }
-    res.send();
+    res.send(body);
 });
 
 app.use('/', express.static('./public'));
