@@ -43,7 +43,7 @@ app.post('/rate', function (req, res) {
                 for (let i = 0; i < rate; i++) {
                   message += icon;
                 }
-                message += '/' + rate;
+                message += '/' + '10';
                 return res.send(message);
           }
     }
