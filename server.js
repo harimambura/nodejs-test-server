@@ -33,8 +33,21 @@ app.get('/about', function (req, res) {
     res.send('About page');
 });
 
-app.post('/shava', function (req, res) {
-    res.send(JSON.stringify(req.body));
+app.post('/rate', function (req, res) {
+    let body = JSON.stringify(req.body);
+    if (body.command === '/vote' && body.text !== '') {
+          const icon = body.text.split(' ')[0];
+          const rate = parseInt(body.text.split(' ')[1]);
+          if (icon && rate) {
+                let message = '';
+                for (let i = 0; i < rate; i++) {
+                  message += icon;
+                }
+                message += '/' + rate;
+                res.send(message);
+          }
+    }
+    res.send();
 });
 
 app.use('/', express.static('./public'));
