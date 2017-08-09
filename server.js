@@ -35,7 +35,7 @@ app.get('/about', function (req, res) {
 
 app.post('/rate', function (req, res) {
     let body = JSON.stringify(req.body);
-    if (body.command === '/vote' && body.text !== '') {
+    if (body.command === '/rate' && body.text !== '') {
           const icon = body.text.split(' ')[0];
           const rate = parseInt(body.text.split(' ')[1]);
           if (icon && rate) {
