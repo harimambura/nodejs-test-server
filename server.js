@@ -35,7 +35,7 @@ app.get('/about', function (req, res) {
 
 app.post('/rate', function (req, res) {
     let body = JSON.stringify(req.body);
-    if (body.command === '/rate' && body.text !== '') {
+    if (body.command == '/rate' && body.text !== '') {
           const icon = body.text.split(' ')[0];
           const rate = parseInt(body.text.split(' ')[1]);
           res.send({icon: icon, rate: rate});
@@ -48,7 +48,7 @@ app.post('/rate', function (req, res) {
                 return res.send(message);
           }
     }
-    res.send(body);
+    res.send(body.command + ' ' + body.text);
 });
 
 app.use('/', express.static('./public'));
