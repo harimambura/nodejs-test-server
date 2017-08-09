@@ -44,7 +44,10 @@ app.post('/rate', function (req, res) {
                   message += icon;
                 }
                 message += '/' + '10';
-                return res.send(message);
+                return res.send({
+                      "response_type": "in_channel",
+                      "text": message
+                  });
           }
     }
     res.send();
